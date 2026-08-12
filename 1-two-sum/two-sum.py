@@ -5,12 +5,10 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        l1 = []
-        for i in range(0,len(nums)):
-            for j in range(i+1,len(nums)):
-                if nums[i] + nums[j] == target:
-                    l1.append(i)
-                    l1.append(j)   
-        return l1             
+        hash_map = {}
+        for i,j in enumerate(nums):
+            difference = target- j
+            if difference in hash_map:
+                return [hash_map[difference],i]
+            hash_map[j] = i    
 
-        
